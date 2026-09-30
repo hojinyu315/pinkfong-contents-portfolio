@@ -247,6 +247,7 @@
 
     /* ── HERO PROFILE CARD ── */
     .profile-card {
+      position: relative;
       order: 2;
       flex-shrink: 0;
       align-self: flex-end;
@@ -313,6 +314,17 @@
     .cast-ch[data-side="l"], .cast-ch[data-side="r"] { --wv: min(var(--w), calc(var(--gut) - 14px)); }
     .cast-ch[data-side="r"] { left: auto; right: max(4px, calc(var(--gut) - var(--wv) - var(--off, 8px))); }
     .cast-ch[data-side="t"] { left: var(--e); right: auto; }
+    /* c = 본문 안쪽(제목 오른쪽 · 프로필 카드 위). 카드 윗선보다 위에 머물게 --y를 잡는다 */
+    /* 프로필 카드 위에 걸터앉는 캐릭터 — 카드 기준이라 해상도가 바뀌어도 간격이 유지된다 */
+    .profile-card .cast-ch {
+      --wv: var(--cw);
+      left: var(--cx);
+      right: auto;
+      top: auto;
+      bottom: calc(100% - var(--cdip, 20px));
+      z-index: 2;
+    }
+    @media (max-width: 1150px) { .profile-card .cast-ch { display: none; } }
     .cast-ch img {
       display: block;
       width: 100%;
@@ -1487,6 +1499,8 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 <section class="hero" id="hero">
   <div class="hero-inner">
     <div class="profile-card">
+      <span class="cast-ch" aria-hidden="true" style="--cx:3%;--cw:118px;--cdip:16px;--d:0.33s;--z:2"><img src="cast/shark.png?v=3" alt="" style="--r:2.6deg;--fd:4.0s" decoding="async"></span>
+      <span class="cast-ch" aria-hidden="true" style="--cx:45%;--cw:152px;--cdip:14px;--d:0.26s;--z:3"><img src="cast/pinkfong.png?v=3" alt="" style="--r:-2.4deg;--fd:4.6s" decoding="async"></span>
       <img class="profile-photo" src="profile-round.png" alt="유호진">
       <div class="profile-meta">
         <div class="profile-name">유호진</div>
@@ -1509,15 +1523,13 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     </div>
   </div>
   <div class="hero-cast" aria-hidden="true">
-    <span class="cast-ch" data-side="l" data-drop="1" style="--e:0px;--off:10px;--y:5%;--w:150px;--d:0.05s;--z:2"><img src="cast/seal.png?v=3" alt="" style="--r:-3.2deg;--fd:4.9s" loading="eager" decoding="async"></span>
-    <span class="cast-ch" data-side="l" data-drop="1" style="--e:0px;--off:62px;--y:27%;--w:112px;--d:0.19s;--z:4"><img src="cast/cat.png?v=3" alt="" style="--r:3.8deg;--fd:4.1s" loading="eager" decoding="async"></span>
-    <span class="cast-ch" data-side="l" data-drop="1" style="--e:0px;--off:6px;--y:49%;--w:128px;--d:0.33s;--z:5"><img src="cast/shark.png?v=3" alt="" style="--r:2.6deg;--fd:4.0s" loading="eager" decoding="async"></span>
-    <span class="cast-ch" data-side="l" data-drop="1" style="--e:0px;--off:34px;--y:71%;--w:148px;--d:0.61s;--z:6"><img src="cast/green.png?v=3" alt="" style="--r:2.8deg;--fd:4.3s" loading="eager" decoding="async"></span>
-    <span class="cast-ch" data-side="r" data-drop="1" style="--e:0px;--off:12px;--y:4%;--w:158px;--d:0.40s;--z:7"><img src="cast/hogi.png?v=3" alt="" style="--r:-2.2deg;--fd:5.0s" loading="eager" decoding="async"></span>
-    <span class="cast-ch" data-side="r" data-drop="1" style="--e:0px;--off:90px;--y:33%;--w:165px;--d:0.26s;--z:6"><img src="cast/pinkfong.png?v=3" alt="" style="--r:-2.4deg;--fd:4.6s" loading="eager" decoding="async"></span>
-    <span class="cast-ch" data-side="r" data-drop="1" style="--e:0px;--off:0px;--y:67%;--w:180px;--d:0.54s;--z:8"><img src="cast/truck.png?v=3" alt="" style="--r:-1.8deg;--fd:5.4s" loading="eager" decoding="async"></span>
+    <span class="cast-ch" data-side="l" data-drop="1" style="--e:0px;--off:10px;--y:6%;--w:150px;--d:0.05s;--z:2"><img src="cast/seal.png?v=3" alt="" style="--r:-3.2deg;--fd:4.9s" loading="eager" decoding="async"></span>
+    <span class="cast-ch" data-side="l" data-drop="1" style="--e:0px;--off:62px;--y:36%;--w:112px;--d:0.19s;--z:4"><img src="cast/cat.png?v=3" alt="" style="--r:3.8deg;--fd:4.1s" loading="eager" decoding="async"></span>
+    <span class="cast-ch" data-side="l" data-drop="1" style="--e:0px;--off:34px;--y:68%;--w:148px;--d:0.61s;--z:6"><img src="cast/green.png?v=3" alt="" style="--r:2.8deg;--fd:4.3s" loading="eager" decoding="async"></span>
+    <span class="cast-ch" data-side="r" data-drop="1" style="--e:0px;--off:12px;--y:6%;--w:158px;--d:0.40s;--z:7"><img src="cast/hogi.png?v=3" alt="" style="--r:-2.2deg;--fd:5.0s" loading="eager" decoding="async"></span>
+    <span class="cast-ch" data-side="r" data-drop="1" style="--e:0px;--off:0px;--y:64%;--w:180px;--d:0.54s;--z:8"><img src="cast/truck.png?v=3" alt="" style="--r:-1.8deg;--fd:5.4s" loading="eager" decoding="async"></span>
     <span class="cast-ch" data-side="t" data-drop="0" style="--e:13%;--off:0px;--y:2%;--w:125px;--d:0.12s;--z:3"><img src="cast/dino.png?v=3" alt="" style="--r:3.4deg;--fd:3.8s" loading="eager" decoding="async"></span>
-    <span class="cast-ch" data-side="t" data-drop="0" style="--e:26%;--off:0px;--y:6%;--w:75px;--d:0.47s;--z:4"><img src="cast/jelly.png?v=3" alt="" style="--r:2.4deg;--fd:3.6s" loading="eager" decoding="async"></span>
+    <span class="cast-ch" data-side="t" data-drop="0" style="--e:26%;--off:0px;--y:7%;--w:75px;--d:0.47s;--z:4"><img src="cast/jelly.png?v=3" alt="" style="--r:2.4deg;--fd:3.6s" loading="eager" decoding="async"></span>
   </div>
 </section>
 
