@@ -246,11 +246,10 @@
     }
 
     /* ── HERO PROFILE CARD ── */
+    .profile-wrap { position: relative; order: 2; flex-shrink: 0; align-self: flex-end; }
     .profile-card {
       position: relative;
-      order: 2;
-      flex-shrink: 0;
-      align-self: flex-end;
+      z-index: 1;               /* 캐릭터(z-index 0)보다 항상 앞 */
       display: flex;
       align-items: center;
       gap: 26px;
@@ -322,16 +321,22 @@
     .cast-ch[data-side="c"] { left: calc(var(--gut) + var(--e)); right: auto; }
     /* c = 본문 안쪽(제목 오른쪽 · 프로필 카드 위). 카드 윗선보다 위에 머물게 --y를 잡는다 */
     /* 프로필 카드 위에 걸터앉는 캐릭터 — 카드 기준이라 해상도가 바뀌어도 간격이 유지된다 */
-    .profile-card .cast-ch {
+    .profile-wrap .cast-ch {
       --wv: var(--cw);
       left: var(--cx);
       right: auto;
       top: auto;
       bottom: calc(100% - var(--cdip, 20px));
-      z-index: 2;
+      z-index: 0;             /* 프로필 카드(z-index 1)보다 뒤 */
     }
-    .profile-card .cast-ch[data-pos="below"] { bottom: auto; top: calc(100% - var(--cdip, 16px)); }
-    @media (max-width: 1150px) { .profile-card .cast-ch { display: none; } }
+    /* 카드 오른쪽 옆(캐릭터들 사이 빈 구간) */
+    .profile-wrap .cast-ch[data-pos="right"] {
+      left: calc(100% + var(--cgap, 12px));
+      top: var(--ctop, 0px);
+      bottom: auto;
+    }
+    .profile-wrap .cast-ch[data-pos="below"] { bottom: auto; top: calc(100% - var(--cdip, 16px)); }
+    @media (max-width: 1150px) { .profile-wrap .cast-ch { display: none; } }
     .cast-ch img {
       display: block;
       width: 100%;
@@ -1202,7 +1207,8 @@
       .hero { padding: 80px 24px 60px; min-height: auto; }
       .hero-inner { flex-direction: column; gap: 40px; }
       .hero-text { flex: 1; max-width: 100%; }
-      .profile-card { order: 1; align-self: stretch; }
+      .profile-wrap { order: 1; align-self: stretch; }
+      .profile-card { width: 100%; }
       .metrics-inner { padding: 32px 24px; grid-template-columns: 1fr; }
       .philosophy-grid { grid-template-columns: 1fr; gap: 2px; }
       .timeline { padding-left: 70px; }
@@ -1504,15 +1510,17 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-inner">
-    <div class="profile-card">
-      <span class="cast-ch" aria-hidden="true" style="--cx:2%;--cw:120px;--cdip:16px;--d:0.05s;--z:2"><img src="cast/seal.png?v=3" alt="" style="--r:-3.2deg;--fd:4.9s" decoding="async"></span>
-      <span class="cast-ch" aria-hidden="true" style="--cx:45%;--cw:152px;--cdip:14px;--d:0.26s;--z:3"><img src="cast/pinkfong.png?v=3" alt="" style="--r:-2.4deg;--fd:4.6s" decoding="async"></span>
-      <span class="cast-ch" data-pos="below" aria-hidden="true" style="--cx:8%;--cw:105px;--cdip:14px;--d:0.19s;--z:2"><img src="cast/cat.png?v=3" alt="" style="--r:3.8deg;--fd:4.1s" decoding="async"></span>
-      <span class="cast-ch" data-pos="below" aria-hidden="true" style="--cx:52%;--cw:120px;--cdip:6px;--d:0.61s;--z:2"><img src="cast/green.png?v=3" alt="" style="--r:2.8deg;--fd:4.3s" decoding="async"></span>
-      <img class="profile-photo" src="profile-round.png" alt="유호진">
-      <div class="profile-meta">
-        <div class="profile-name">유호진</div>
-        <div class="profile-role">Video Editing ·<br>Character IP</div>
+    <div class="profile-wrap">
+      <span class="cast-ch" aria-hidden="true" style="--cx:-12%;--cw:110px;--cdip:18px;--d:0.05s"><img src="cast/seal.png?v=3" alt="" style="--r:-3.2deg;--fd:4.9s" decoding="async"></span>
+      <span class="cast-ch" aria-hidden="true" style="--cx:45%;--cw:152px;--cdip:14px;--d:0.26s"><img src="cast/pinkfong.png?v=3" alt="" style="--r:-2.4deg;--fd:4.6s" decoding="async"></span>
+      <span class="cast-ch" data-pos="right" aria-hidden="true" style="--cgap:14px;--ctop:-104px;--cw:95px;--d:0.19s"><img src="cast/cat.png?v=3" alt="" style="--r:3.8deg;--fd:4.1s" decoding="async"></span>
+      <span class="cast-ch" data-pos="right" aria-hidden="true" style="--cgap:10px;--ctop:128px;--cw:100px;--d:0.61s"><img src="cast/green.png?v=3" alt="" style="--r:2.8deg;--fd:4.3s" decoding="async"></span>
+      <div class="profile-card">
+        <img class="profile-photo" src="profile-round.png" alt="유호진">
+        <div class="profile-meta">
+          <div class="profile-name">유호진</div>
+          <div class="profile-role">Video Editing ·<br>Character IP</div>
+        </div>
       </div>
     </div>
     <div class="hero-text">
