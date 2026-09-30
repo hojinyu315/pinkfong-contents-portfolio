@@ -208,7 +208,7 @@
 
     /* ── HERO ── */
     .hero {
-      min-height: clamp(560px, 76vh, 760px);
+      min-height: clamp(640px, 76vh, 760px);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -330,6 +330,7 @@
       bottom: calc(100% - var(--cdip, 20px));
       z-index: 2;
     }
+    .profile-card .cast-ch[data-pos="below"] { bottom: auto; top: calc(100% - var(--cdip, 16px)); }
     @media (max-width: 1150px) { .profile-card .cast-ch { display: none; } }
     .cast-ch img {
       display: block;
@@ -1504,7 +1505,10 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 <section class="hero" id="hero">
   <div class="hero-inner">
     <div class="profile-card">
+      <span class="cast-ch" aria-hidden="true" style="--cx:2%;--cw:120px;--cdip:16px;--d:0.05s;--z:2"><img src="cast/seal.png?v=3" alt="" style="--r:-3.2deg;--fd:4.9s" decoding="async"></span>
       <span class="cast-ch" aria-hidden="true" style="--cx:45%;--cw:152px;--cdip:14px;--d:0.26s;--z:3"><img src="cast/pinkfong.png?v=3" alt="" style="--r:-2.4deg;--fd:4.6s" decoding="async"></span>
+      <span class="cast-ch" data-pos="below" aria-hidden="true" style="--cx:8%;--cw:105px;--cdip:14px;--d:0.19s;--z:2"><img src="cast/cat.png?v=3" alt="" style="--r:3.8deg;--fd:4.1s" decoding="async"></span>
+      <span class="cast-ch" data-pos="below" aria-hidden="true" style="--cx:52%;--cw:120px;--cdip:6px;--d:0.61s;--z:2"><img src="cast/green.png?v=3" alt="" style="--r:2.8deg;--fd:4.3s" decoding="async"></span>
       <img class="profile-photo" src="profile-round.png" alt="유호진">
       <div class="profile-meta">
         <div class="profile-name">유호진</div>
@@ -1527,14 +1531,11 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     </div>
   </div>
   <div class="hero-cast" aria-hidden="true">
-    <span class="cast-ch" data-side="l" data-drop="1" style="--e:0px;--lmin:6px;--off:10px;--y:6%;--w:150px;--d:0.05s;--z:2"><img src="cast/seal.png?v=3" alt="" style="--r:-3.2deg;--fd:4.9s" loading="eager" decoding="async"></span>
-    <span class="cast-ch" data-side="l" data-drop="1" style="--e:0px;--off:52px;--y:38%;--w:112px;--d:0.19s;--z:4"><img src="cast/cat.png?v=3" alt="" style="--r:3.8deg;--fd:4.1s" loading="eager" decoding="async"></span>
-    <span class="cast-ch" data-side="l" data-drop="1" style="--e:0px;--off:28px;--y:70%;--w:148px;--d:0.61s;--z:6"><img src="cast/green.png?v=3" alt="" style="--r:2.8deg;--fd:4.3s" loading="eager" decoding="async"></span>
-    <span class="cast-ch" data-side="r" data-drop="1" style="--e:0px;--off:12px;--y:6%;--w:158px;--d:0.40s;--z:7"><img src="cast/hogi.png?v=3" alt="" style="--r:-2.2deg;--fd:5.0s" loading="eager" decoding="async"></span>
+    <span class="cast-ch" data-side="c" data-drop="1" style="--e:560px;--off:0px;--y:2%;--w:132px;--d:0.12s;--z:3"><img src="cast/dino.png?v=3" alt="" style="--r:3.4deg;--fd:3.8s" loading="eager" decoding="async"></span>
+    <span class="cast-ch" data-side="c" data-drop="1" style="--e:700px;--off:0px;--y:6%;--w:88px;--d:0.47s;--z:4"><img src="cast/jelly.png?v=3" alt="" style="--r:2.4deg;--fd:3.6s" loading="eager" decoding="async"></span>
+    <span class="cast-ch" data-side="r" data-drop="1" style="--e:0px;--off:12px;--y:4%;--w:158px;--d:0.40s;--z:7"><img src="cast/hogi.png?v=3" alt="" style="--r:-2.2deg;--fd:5.0s" loading="eager" decoding="async"></span>
     <span class="cast-ch" data-side="r" data-drop="1" style="--e:0px;--off:95px;--y:36%;--w:128px;--d:0.33s;--z:5"><img src="cast/shark.png?v=3" alt="" style="--r:2.6deg;--fd:4.0s" loading="eager" decoding="async"></span>
     <span class="cast-ch" data-side="r" data-drop="1" style="--e:0px;--off:30px;--y:66%;--w:180px;--d:0.54s;--z:8"><img src="cast/truck.png?v=3" alt="" style="--r:-1.8deg;--fd:5.4s" loading="eager" decoding="async"></span>
-    <span class="cast-ch" data-side="c" data-drop="1" style="--e:560px;--y:2%;--w:132px;--d:0.12s;--z:3"><img src="cast/dino.png?v=3" alt="" style="--r:3.4deg;--fd:3.8s" loading="eager" decoding="async"></span>
-    <span class="cast-ch" data-side="c" data-drop="1" style="--e:700px;--y:5%;--w:88px;--d:0.47s;--z:4"><img src="cast/jelly.png?v=3" alt="" style="--r:2.4deg;--fd:3.6s" loading="eager" decoding="async"></span>
   </div>
 </section>
 
