@@ -311,7 +311,12 @@
       animation: cast-pop 0.82s cubic-bezier(0.18, 1.24, 0.3, 1) var(--d) forwards;
     }
     /* 여백이 좁은 화면에서는 캐릭터 폭을 여백 안으로 묶어 본문 침범을 막는다 */
-    .cast-ch[data-side="l"], .cast-ch[data-side="r"] { --wv: min(var(--w), calc(var(--gut) - 14px)); }
+    .cast-ch[data-side="r"] { --wv: min(var(--w), calc(var(--gut) - 14px)); }
+    /* 왼쪽은 사이드바 아이콘 영역을 침범하지 않게 하한을 둔다 */
+    .cast-ch[data-side="l"] {
+      --wv: min(var(--w), calc(var(--gut) - var(--lmin, 50px) - 8px));
+      left: max(var(--lmin, 50px), calc(var(--gut) - var(--wv) - var(--off, 8px)));
+    }
     .cast-ch[data-side="r"] { left: auto; right: max(4px, calc(var(--gut) - var(--wv) - var(--off, 8px))); }
     .cast-ch[data-side="t"] { left: var(--e); right: auto; }
     .cast-ch[data-side="c"] { left: calc(var(--gut) + var(--e)); right: auto; }
@@ -1499,7 +1504,6 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 <section class="hero" id="hero">
   <div class="hero-inner">
     <div class="profile-card">
-      <span class="cast-ch" aria-hidden="true" style="--cx:3%;--cw:118px;--cdip:16px;--d:0.33s;--z:2"><img src="cast/shark.png?v=3" alt="" style="--r:2.6deg;--fd:4.0s" decoding="async"></span>
       <span class="cast-ch" aria-hidden="true" style="--cx:45%;--cw:152px;--cdip:14px;--d:0.26s;--z:3"><img src="cast/pinkfong.png?v=3" alt="" style="--r:-2.4deg;--fd:4.6s" decoding="async"></span>
       <img class="profile-photo" src="profile-round.png" alt="유호진">
       <div class="profile-meta">
@@ -1523,11 +1527,12 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     </div>
   </div>
   <div class="hero-cast" aria-hidden="true">
-    <span class="cast-ch" data-side="l" data-drop="1" style="--e:0px;--off:10px;--y:6%;--w:150px;--d:0.05s;--z:2"><img src="cast/seal.png?v=3" alt="" style="--r:-3.2deg;--fd:4.9s" loading="eager" decoding="async"></span>
-    <span class="cast-ch" data-side="l" data-drop="1" style="--e:0px;--off:62px;--y:36%;--w:112px;--d:0.19s;--z:4"><img src="cast/cat.png?v=3" alt="" style="--r:3.8deg;--fd:4.1s" loading="eager" decoding="async"></span>
-    <span class="cast-ch" data-side="l" data-drop="1" style="--e:0px;--off:34px;--y:68%;--w:148px;--d:0.61s;--z:6"><img src="cast/green.png?v=3" alt="" style="--r:2.8deg;--fd:4.3s" loading="eager" decoding="async"></span>
+    <span class="cast-ch" data-side="l" data-drop="1" style="--e:0px;--lmin:6px;--off:10px;--y:6%;--w:150px;--d:0.05s;--z:2"><img src="cast/seal.png?v=3" alt="" style="--r:-3.2deg;--fd:4.9s" loading="eager" decoding="async"></span>
+    <span class="cast-ch" data-side="l" data-drop="1" style="--e:0px;--off:52px;--y:38%;--w:112px;--d:0.19s;--z:4"><img src="cast/cat.png?v=3" alt="" style="--r:3.8deg;--fd:4.1s" loading="eager" decoding="async"></span>
+    <span class="cast-ch" data-side="l" data-drop="1" style="--e:0px;--off:28px;--y:70%;--w:148px;--d:0.61s;--z:6"><img src="cast/green.png?v=3" alt="" style="--r:2.8deg;--fd:4.3s" loading="eager" decoding="async"></span>
     <span class="cast-ch" data-side="r" data-drop="1" style="--e:0px;--off:12px;--y:6%;--w:158px;--d:0.40s;--z:7"><img src="cast/hogi.png?v=3" alt="" style="--r:-2.2deg;--fd:5.0s" loading="eager" decoding="async"></span>
-    <span class="cast-ch" data-side="r" data-drop="1" style="--e:0px;--off:0px;--y:64%;--w:180px;--d:0.54s;--z:8"><img src="cast/truck.png?v=3" alt="" style="--r:-1.8deg;--fd:5.4s" loading="eager" decoding="async"></span>
+    <span class="cast-ch" data-side="r" data-drop="1" style="--e:0px;--off:95px;--y:36%;--w:128px;--d:0.33s;--z:5"><img src="cast/shark.png?v=3" alt="" style="--r:2.6deg;--fd:4.0s" loading="eager" decoding="async"></span>
+    <span class="cast-ch" data-side="r" data-drop="1" style="--e:0px;--off:30px;--y:66%;--w:180px;--d:0.54s;--z:8"><img src="cast/truck.png?v=3" alt="" style="--r:-1.8deg;--fd:5.4s" loading="eager" decoding="async"></span>
     <span class="cast-ch" data-side="c" data-drop="1" style="--e:560px;--y:2%;--w:132px;--d:0.12s;--z:3"><img src="cast/dino.png?v=3" alt="" style="--r:3.4deg;--fd:3.8s" loading="eager" decoding="async"></span>
     <span class="cast-ch" data-side="c" data-drop="1" style="--e:700px;--y:5%;--w:88px;--d:0.47s;--z:4"><img src="cast/jelly.png?v=3" alt="" style="--r:2.4deg;--fd:3.6s" loading="eager" decoding="async"></span>
   </div>
